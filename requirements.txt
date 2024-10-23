@@ -1,0 +1,8 @@
+transformers[torch,protobuf,tiktoken,sentencepiece]
+datasets
+pillow
+protobuf
+tiktoken
+evaluate
+# Required by CER
+jiwer
