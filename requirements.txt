@@ -6,5 +6,3 @@ tiktoken
 evaluate
 # Required by CER
 jiwer
-torchvision
-matplotlib
