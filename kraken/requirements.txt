@@ -1,0 +1,16 @@
+# Kraken
+kraken
+ipykernel
+
+pillow
+
+# Dataset & eval
+datasets
+protobuf
+tiktoken
+evaluate
+# Required by CER error metric
+jiwer
+
+
+numpy<2.0
