@@ -6,7 +6,7 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 
 |   | Kraken | TrOCR |
 |---|---|---|
-| Built-in image segmentation | Yes/low quality | No |
+| Built-in image segmentation | Yes | No |
 | Exportable[^1] | [No](https://github.com/mittagessen/kraken/issues/614) | Probably[^2] |
 | Single-line performance estimate[^3] | $$0.3 \frac{\text{seconds}}{\text{sample}}$$ | $$2.9 \frac{\text{seconds}}{\text{sample}}$$ |
 | Segmentation performance estimate | 30 s/image | N/A |
