@@ -12,7 +12,7 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 | Segmentation performance estimate | 30 s/image | N/A |
 
 [^1]: For example, so that no Python interpreter is required to run the model.
-[^2]: There exist [repositories](https://github.com/OvercookedOmelette/trocr-to-onnx/blob/main/trocr-small-printed-converter.ipynb) that export other TrOCR models to ONNX. As such, it seems probable that TrOCR models can be exported and used without a Python interpreter.
+[^2]: There exist [repositories](https://github.com/OvercookedOmelette/trocr-to-onnx/blob/main/trocr-small-printed-converter.ipynb) that export other TrOCR models to ONNX. As such, it seems probable that the TrOCR models used here can be exported (and thus used without a Python interpreter).
 [^3]: Does not include segmentation. All performance estimates are rough estimates.
 
 ## Image segmentation vs single-line htr
@@ -34,7 +34,7 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 | CER (Character Error Rate) |	0.538811 |
 | WER (Word Error Rate) |	1.007592 |
 | Average Similarity (%) |	62.702178 |
-| Average evaluation time (s)	| 0.282406 |
+| Average seconds/image (s)	| 0.282406 |
 
 ### TrOCR
 
