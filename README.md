@@ -6,13 +6,13 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 
 |   | Kraken | TrOCR |
 |---|---|---|
-| Built-in image segmentation | Yes/low quality | No |
+| Built-in image segmentation | Yes | No |
 | Exportable[^1] | [No](https://github.com/mittagessen/kraken/issues/614) | Probably[^2] |
 | Single-line performance estimate[^3] | $$0.3 \frac{\text{seconds}}{\text{sample}}$$ | $$2.9 \frac{\text{seconds}}{\text{sample}}$$ |
 | Segmentation performance estimate | 30 s/image | N/A |
 
 [^1]: For example, so that no Python interpreter is required to run the model.
-[^2]: There exist [repositories](https://github.com/OvercookedOmelette/trocr-to-onnx/blob/main/trocr-small-printed-converter.ipynb) that export other TrOCR models to ONNX. As such, it seems probable that TrOCR models can be exported and used without a Python interpreter.
+[^2]: There exist [repositories](https://github.com/OvercookedOmelette/trocr-to-onnx/blob/main/trocr-small-printed-converter.ipynb) that export other TrOCR models to ONNX. As such, it seems probable that the TrOCR models used here can be exported (and thus used without a Python interpreter).
 [^3]: Does not include segmentation. All performance estimates are rough estimates.
 
 ## Image segmentation vs single-line htr
@@ -25,7 +25,7 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 
 ### Kraken
 
-**Model**: Existing model: ["Transcription model for Lucien Peraire's handwriting"](https://zenodo.org/records/8193498) model (see [kraken/fine-tune-kraken.ipynb](./kraken/fine-tune-kraken.ipynb)).  
+**Model**: Existing model: ["Transcription model for Lucien Peraire's handwriting"](https://zenodo.org/records/8193498) (see [kraken/fine-tune-kraken.ipynb](./kraken/fine-tune-kraken.ipynb)).  
 **Trained on**: [Handwritten text (details)](https://github.com/alix-tz/peraire-ground-truth)  
 **Evaluated on**: 50 lines from the [RIMES test dataset](https://huggingface.co/datasets/Teklia/RIMES-2011-line/viewer/default/test).
 
@@ -34,11 +34,11 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 | CER (Character Error Rate) |	0.538811 |
 | WER (Word Error Rate) |	1.007592 |
 | Average Similarity (%) |	62.702178 |
-| Average evaluation time (s)	| 0.282406 |
+| Average seconds/image (s)	| 0.282406 |
 
 ### TrOCR
 
-**Model**: Fine-tuned version of [`microsoft/trocr-small-handwritten`](https://huggingface.co/microsoft/trocr-small-handwritten).  
+**Model**: Fine-tuned version of [`microsoft/trocr-small-handwritten`](https://huggingface.co/microsoft/trocr-small-handwritten)  (see [trocr/fine-tune-trocr.ipynb](./kraken/fine-tune-trocr.ipynb)).  
 **Trained on**: [RIMES training dataset](https://huggingface.co/datasets/Teklia/RIMES-2011-line/viewer/default/train). This is in addition to mostly English-language training from the original model.  
 **Evaluated on**: 50 lines from the [RIMES test dataset](https://huggingface.co/datasets/Teklia/RIMES-2011-line/viewer/default/test).
 
