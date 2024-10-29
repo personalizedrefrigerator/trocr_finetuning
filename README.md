@@ -25,7 +25,7 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 
 ### Kraken
 
-**Model**: Existing model: ["Transcription model for Lucien Peraire's handwriting"](https://zenodo.org/records/8193498) model (see [kraken/fine-tune-kraken.ipynb](./kraken/fine-tune-kraken.ipynb)).  
+**Model**: Existing model: ["Transcription model for Lucien Peraire's handwriting"](https://zenodo.org/records/8193498) (see [kraken/fine-tune-kraken.ipynb](./kraken/fine-tune-kraken.ipynb)).  
 **Trained on**: [Handwritten text (details)](https://github.com/alix-tz/peraire-ground-truth)  
 **Evaluated on**: 50 lines from the [RIMES test dataset](https://huggingface.co/datasets/Teklia/RIMES-2011-line/viewer/default/test).
 
@@ -38,7 +38,7 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 
 ### TrOCR
 
-**Model**: Fine-tuned version of [`microsoft/trocr-small-handwritten`](https://huggingface.co/microsoft/trocr-small-handwritten).  
+**Model**: Fine-tuned version of [`microsoft/trocr-small-handwritten`](https://huggingface.co/microsoft/trocr-small-handwritten)  (see [trocr/fine-tune-trocr.ipynb](./kraken/fine-tune-trocr.ipynb)).  
 **Trained on**: [RIMES training dataset](https://huggingface.co/datasets/Teklia/RIMES-2011-line/viewer/default/train). This is in addition to mostly English-language training from the original model.  
 **Evaluated on**: 50 lines from the [RIMES test dataset](https://huggingface.co/datasets/Teklia/RIMES-2011-line/viewer/default/test).
 
