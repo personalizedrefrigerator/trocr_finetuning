@@ -59,7 +59,7 @@ This repository compares Kraken and TrOCR for French-language HTR (Handwritten T
 
 ...
 
-## Segmentation
+## Kraken segmentation
 
 **Kraken** contains built-in image segmentation. The default image segmentation model, however, may not work well enough on handwritten text.
 
