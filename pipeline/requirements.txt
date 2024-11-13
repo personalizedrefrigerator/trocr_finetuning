@@ -1,0 +1,12 @@
+# Kraken
+kraken
+numpy<2.0
+ipykernel
+
+# Transformers
+tiktoken
+protobuf
+
+pillow
+
+transformers[torch,protobuf,tiktoken,sentencepiece]

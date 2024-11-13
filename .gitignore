@@ -1,3 +1,5 @@
 */venv/
 trocr/model/
 kraken/model/
+kraken/data/
+__pycache__
