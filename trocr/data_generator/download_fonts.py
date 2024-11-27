@@ -181,6 +181,56 @@ download_urls = [
 		name='Hubballi',
 		font_dir='hubballi',
 	),
+	FontSpec(
+		name='Corinthia',
+		font_dir='corinthia',
+	),
+	FontSpec(
+		name='WindSong',
+		font_dir='windsong',
+	),
+	FontSpec(
+		name='Caramel',
+		font_dir='caramel',
+	),
+	FontSpec(
+		name='Qwigley',
+		font_dir='qwigley',
+	),
+	FontSpec(
+		name='Inspiration',
+		font_dir='inspiration',
+	),
+	FontSpec(
+		name='Bilbo',
+		font_dir='bilbo',
+	),
+	FontSpec(
+		name='JustMeAgainDownHere',
+		font_dir='justmeagaindownhere',
+		font_filename='JustMeAgainDownHere.ttf',
+	),
+	FontSpec(
+		name='PrincessSofia',
+		font_dir='princesssofia',
+	),
+	FontSpec(
+		name='MsMadi',
+		font_dir='msmadi',
+	),
+	FontSpec(
+		name='Miniver',
+		font_dir='miniver',
+	),
+	FontSpec(
+		name='Mynerve',
+		font_dir='mynerve',
+	),
+	FontSpec(
+		name='Schoolbell',
+		font_dir='schoolbell',
+		type='apache'
+	),
 ]
 
 def download_fonts():
