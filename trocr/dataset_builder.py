@@ -6,6 +6,7 @@ import PIL.ImageFont as ImageFont
 from random import Random
 from IPython.display import HTML, display
 from data_generator.make_font_dataset import make_font_dataset
+from data_generator.make_handwriting_dataset import make_handwriting_dataset
 from pathlib import Path
 
 import torch
@@ -15,19 +16,34 @@ class FineTuningDataset:
 		self.processor_ = processor
 
 		data_directory = Path(__file__).parent / 'data'
-		font_dataset_path = (data_directory / 'dataset-saves' / 'font_data')
+		dataset_path = data_directory / 'dataset-saves'
+		font_dataset_path = dataset_path / 'font'
+		handwriting_dataset_path = dataset_path / 'handwriting'
+
+		if not handwriting_dataset_path.exists():
+			handwriting_dataset = make_handwriting_dataset().shuffle(seed=14)
+			handwriting_dataset_path.mkdir(parents=True)
+			handwriting_dataset.save_to_disk(handwriting_dataset_path)
+		else:
+			handwriting_dataset = Dataset.load_from_disk(handwriting_dataset_path)
+
 		if not font_dataset_path.exists():
 			font_dataset = make_font_dataset().shuffle(seed=13)
-			font_dataset_path.mkdir(parents = True, exist_ok=True)
+			font_dataset_path.mkdir(parents=True)
 			font_dataset.save_to_disk(font_dataset_path)
 		else:
 			font_dataset = Dataset.load_from_disk(font_dataset_path)
 
+		full_dataset = interleave_datasets([
+			handwriting_dataset,
+			font_dataset,
+		], [0.01, 0.99], stopping_strategy='all_exhausted')
+
 		#revision = 'ba3e6b5'
 		#dataset_train_rimes_raw = load_dataset('Teklia/RIMES-2011-line', revision=revision, split='train')
 
-		font_first_100 = font_dataset.take(100)
-		dataset_train_raw = font_dataset.skip(100).to_iterable_dataset()
+		font_first_100 = full_dataset.take(100)
+		dataset_train_raw = full_dataset.skip(100).to_iterable_dataset()
 
 		#dataset_test_rimes_raw = load_dataset('Teklia/RIMES-2011-line', revision=revision, split='test')
 		dataset_test_raw = font_first_100

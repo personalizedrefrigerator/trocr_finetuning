@@ -35,3 +35,21 @@ def segment_image(image: Image.Image)->list[Image.Image]:
 	return [
 		crop_image_to_polygon(image, boundary) for boundary in boundaries
 	]
+
+
+def combine_neighboring_lines(images: list[Image.Image]):
+	result = []
+	for i in range(0, len(images), 1):
+		if i + 1 >= len(images):
+			result.append(images[i])
+		else:
+			first = images[i]
+			second = images[i + 1]
+			spacing = 0
+			combined_width = first.width + second.width + spacing
+			combined_height = max(first.height, second.height)
+			composite = Image.new('RGB', (combined_width, combined_height), color=(255, 255, 255))
+			composite.paste(first, (0, 0))
+			composite.paste(second, (first.width + spacing, 0))
+			result.append(composite)
+	return result
