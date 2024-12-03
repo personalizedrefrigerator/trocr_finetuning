@@ -254,7 +254,7 @@ def make_font_dataset():
 			for text in f.readlines():
 				# Clean up the text and remove characters that show up unnecessarily in
 				# the output.
-				text = text.strip()\
+				text = text\
 					.replace('—', '')\
 					.replace('«', '')\
 					.replace('»', '')\
@@ -264,7 +264,8 @@ def make_font_dataset():
 					.replace('�', '')\
 					.replace('’', "'")\
 					.replace('°', 'o')\
-					.replace('  ', ' ')
+					.replace('  ', ' ')\
+					.strip()
 				if text == '':
 					continue
 				
