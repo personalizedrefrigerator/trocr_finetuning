@@ -30,7 +30,17 @@ def segment_image(image: Image.Image)->list[Image.Image]:
 	""" Divides an input [image] into cropped lines of text.
 	"""
 	def process_boundary(boundary):
-		return [ tuple(point) for point in boundary ]
+		avg_y = sum(point[1] for point in boundary) / len(boundary)
+		def process_point(point: list[int]):
+			x = point[0]
+			y = point[1]
+			if y < avg_y:
+				y -= 10
+			else:
+				y += 10
+			y = min(image.height, max(y, 0))
+			return (x, y)
+		return [ process_point(point) for point in boundary ]
 	boundaries = [ process_boundary(line.boundary) for line in blla.segment(image).lines ]
 	return [
 		crop_image_to_polygon(image, boundary) for boundary in boundaries

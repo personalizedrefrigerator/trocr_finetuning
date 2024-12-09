@@ -7,9 +7,8 @@ from utils.segment_image import segment_image
 
 class TextRecognizer:
 	def __init__(self):
-		local_path = Path('/media/sf_vbox-share/model-20241128T173856Z-001/model/').resolve()
-		processor = TrOCRProcessor.from_pretrained('microsoft/trocr-base-handwritten')
-		model = VisionEncoderDecoderModel.from_pretrained(local_path)
+		processor = TrOCRProcessor.from_pretrained('microsoft/trocr-small-handwritten')
+		model = VisionEncoderDecoderModel.from_pretrained('personalizedrefrigerator/trocr-small-fr')
 
 		model.config.decoder_start_token_id = processor.tokenizer.cls_token_id
 		model.config.pad_token_id = processor.tokenizer.pad_token_id
