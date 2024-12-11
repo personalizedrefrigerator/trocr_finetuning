@@ -3,7 +3,10 @@ from transformers import VisionEncoderDecoderModel, TrOCRProcessor
 import torch
 from pathlib import Path
 from utils.segment_image import segment_image
+from spellchecker import SpellChecker
+import re
 
+SPACES_EXP = re.compile(r'\s+')
 
 class TextRecognizer:
 	def __init__(self):
@@ -24,7 +27,22 @@ class TextRecognizer:
 
 		self.model = model
 		self.processor = processor
+		self.spellcheck = SpellChecker(language='fr')
 	
+	def fix_spelling(self, text: str)->str:
+		words = SPACES_EXP.split(text)
+		wrong_words = self.spellcheck.unknown(words)
+		corrections = {}
+		for word in wrong_words:
+			corrections[word] = self.spellcheck.correction(word)
+		
+		def fix_word(word: str):
+			# If no correction is available, corrections[word] is None
+			if word in corrections and corrections[word] != None:
+				return corrections[word]
+			return word
+
+		return ' '.join([ fix_word(word) for word in words ])
 
 	def recognize_lines(self, images_raw: list[Image.Image])->str:
 		def convert_image(image: Image.Image):
@@ -37,7 +55,7 @@ class TextRecognizer:
 			batch = torch.stack(images[i:i+batch_size])
 			generated_labels = self.model.generate(batch)
 			result += self.processor.batch_decode(generated_labels, skip_special_tokens=True)
-		return result
+		return [ self.fix_spelling(line) for line in result ]
 
 	def recognize_page(self, page: Image.Image)->list[str]:
-		return self.recognize_lines(segment_image(page))
+		return '\n'.join(self.recognize_lines(segment_image(page)))

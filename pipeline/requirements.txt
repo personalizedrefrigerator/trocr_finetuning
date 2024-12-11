@@ -6,7 +6,7 @@ ipykernel
 # Transformers
 tiktoken
 protobuf
-
 pillow
-
 transformers[torch,protobuf,tiktoken,sentencepiece]
+
+pyspellchecker==0.8.1
